@@ -1,2 +1,544 @@
-# azure-enterprise-landing-zone-end-to-end
-End-to-end Azure Landing Zone implementation based on Microsoft Cloud Adoption Framework, covering governance, identity, networking, security, monitoring, workload deployment, and cost management.
+# End-to-End Azure Enterprise Landing Zone
+
+## Project Overview
+
+This project demonstrates the design and implementation of an enterprise-ready Azure Landing Zone based on Microsoft Cloud Adoption Framework (CAF) principles.
+
+The objective is to establish a secure, scalable, and governed Azure foundation before deploying business workloads.
+
+The implementation includes:
+
+* Management Groups
+* Resource Groups
+* Microsoft Entra ID
+* Azure RBAC
+* Azure Policy
+* Hub-and-Spoke Networking
+* Azure Bastion
+* Azure Key Vault
+* Azure Monitor
+* Log Analytics
+* Cost Management
+* Dev and Production Workloads
+
+---
+
+# Architecture
+
+```text
+Tenant Root Group
+│
+└── mg-nordic-retail
+    │
+    ├── mg-platform
+    │   ├── mg-identity
+    │   ├── mg-management
+    │   └── mg-connectivity
+    │
+    ├── mg-landing-zones
+    │   ├── mg-dev
+    │   └── mg-prod
+    │
+    └── mg-sandbox
+```
+
+## Architecture Diagram
+
+
+![Architecture Diagram](screenshots/01-landing-zone-architecture.png)
+
+
+
+---
+
+# Step 1: Create Management Group Hierarchy
+
+Management Groups provide governance and policy inheritance across subscriptions.
+
+## Management Groups Created
+
+| Management Group | Purpose                  |
+| ---------------- | ------------------------ |
+| mg-nordic-retail | Parent Management Group  |
+| mg-platform      | Shared Platform Services |
+| mg-identity      | Identity Resources       |
+| mg-management    | Monitoring Resources     |
+| mg-connectivity  | Networking Resources     |
+| mg-landing-zones | Workload Environments    |
+| mg-dev           | Development Workloads    |
+| mg-prod          | Production Workloads     |
+| mg-sandbox       | Testing Environment      |
+
+## Screenshot
+
+```text
+screenshots/01-management-group-hierarchy.png
+```
+
+---
+
+# Step 2: Create Resource Groups
+
+Resource Groups were created to logically separate platform and workload resources.
+
+## Resource Groups
+
+| Resource Group           | Purpose               |
+| ------------------------ | --------------------- |
+| rg-platform-connectivity | Networking Resources  |
+| rg-platform-management   | Monitoring Resources  |
+| rg-identity              | Identity Components   |
+| rg-security              | Security Components   |
+| rg-dev-workload          | Development Resources |
+| rg-prod-workload         | Production Resources  |
+
+## Screenshot
+
+```text
+screenshots/02-resource-groups.png
+```
+
+---
+
+# Step 3: Configure Naming Standards and Tags
+
+Tags improve governance, ownership tracking, and cost management.
+
+## Naming Convention
+
+```text
+rg-<environment>-<workload>
+vnet-<environment>-<purpose>
+vm-<environment>-<workload>-01
+nsg-<environment>-<purpose>
+kv-<company>-<environment>
+```
+
+## Tags
+
+| Tag         | Value       |
+| ----------- | ----------- |
+| Environment | Dev / Prod  |
+| Owner       | CloudTeam   |
+| CostCenter  | IT-001      |
+| Project     | LandingZone |
+| Criticality | High        |
+
+## Screenshot
+
+```text
+screenshots/03-resource-tags.png
+```
+
+---
+
+# Step 4: Configure Microsoft Entra ID
+
+Created security groups for role-based administration.
+
+## Groups Created
+
+| Group Name           |
+| -------------------- |
+| grp-cloud-admins     |
+| grp-network-admins   |
+| grp-security-readers |
+| grp-dev-team         |
+| grp-prod-team        |
+
+## Screenshot
+
+```text
+screenshots/04-entra-id-groups.png
+```
+
+---
+
+# Step 5: Configure Azure RBAC
+
+Role-Based Access Control (RBAC) ensures least-privilege access.
+
+## Role Assignments
+
+| Group                | Role                |
+| -------------------- | ------------------- |
+| grp-cloud-admins     | Contributor         |
+| grp-network-admins   | Network Contributor |
+| grp-security-readers | Security Reader     |
+| grp-dev-team         | Contributor         |
+| grp-prod-team        | Reader              |
+
+## Screenshot
+
+```text
+screenshots/05-rbac-assignments.png
+```
+
+---
+
+# Step 6: Create Hub Virtual Network
+
+The Hub VNet hosts shared services and secure connectivity resources.
+
+## Hub Network
+
+```text
+Name: vnet-hub
+Address Space: 10.0.0.0/16
+```
+
+## Subnets
+
+```text
+AzureBastionSubnet
+AzureFirewallSubnet
+snet-shared-services
+```
+
+## Screenshot
+
+```text
+screenshots/06-hub-vnet.png
+```
+
+---
+
+# Step 7: Create Development Spoke Network
+
+The Development Landing Zone hosts non-production workloads.
+
+## Dev Network
+
+```text
+Name: vnet-spoke-dev
+Address Space: 10.1.0.0/16
+Subnet: 10.1.1.0/24
+```
+
+## Screenshot
+
+```text
+screenshots/07-dev-spoke-vnet.png
+```
+
+---
+
+# Step 8: Create Production Spoke Network
+
+The Production Landing Zone hosts business-critical workloads.
+
+## Prod Network
+
+```text
+Name: vnet-spoke-prod
+Address Space: 10.2.0.0/16
+Subnet: 10.2.1.0/24
+```
+
+## Screenshot
+
+```text
+screenshots/08-prod-spoke-vnet.png
+```
+
+---
+
+# Step 9: Configure VNet Peering
+
+Configured Hub-and-Spoke connectivity.
+
+## Peerings
+
+```text
+peer-hub-to-dev
+peer-dev-to-hub
+peer-hub-to-prod
+peer-prod-to-hub
+```
+
+## Screenshot
+
+```text
+screenshots/09-vnet-peering.png
+```
+
+---
+
+# Step 10: Configure Network Security Groups
+
+NSGs were created to control inbound and outbound traffic.
+
+## Security Rules
+
+| Rule                 | Port | Action |
+| -------------------- | ---- | ------ |
+| Allow HTTP           | 80   | Allow  |
+| Allow HTTPS          | 443  | Allow  |
+| Deny Internet RDP    | 3389 | Deny   |
+| Allow Bastion Access | 3389 | Allow  |
+
+## Screenshot
+
+```text
+screenshots/10-nsg-rules.png
+```
+
+---
+
+# Step 11: Deploy Azure Bastion
+
+Azure Bastion enables secure RDP and SSH connectivity without exposing public IP addresses.
+
+## Screenshot
+
+```text
+screenshots/11-azure-bastion.png
+```
+
+---
+
+# Step 12: Deploy Azure Key Vault
+
+Azure Key Vault securely stores secrets and credentials.
+
+## Key Vaults
+
+```text
+kv-nordicretail-dev
+kv-nordicretail-prod
+```
+
+## Secrets Stored
+
+```text
+vm-admin-password
+storage-access-key
+database-connection-string
+```
+
+## Screenshot
+
+```text
+screenshots/12-key-vault-secrets.png
+```
+
+---
+
+# Step 13: Configure Azure Policy
+
+Azure Policy was implemented to enforce governance standards.
+
+## Policies Assigned
+
+* Require Resource Tags
+* Restrict Allowed Regions
+* Deny Public IP Addresses
+* Require Secure Storage Transfer
+* Audit Missing Backups
+
+## Screenshots
+
+```text
+screenshots/13-policy-assignments.png
+screenshots/14-policy-compliance.png
+```
+
+---
+
+# Step 14: Configure Log Analytics Workspace
+
+Centralized logging and monitoring were enabled.
+
+## Workspace
+
+```text
+log-nordicretail-landingzone
+```
+
+## Screenshot
+
+```text
+screenshots/15-log-analytics-workspace.png
+```
+
+---
+
+# Step 15: Enable Azure Monitor
+
+Monitoring was enabled for:
+
+* Virtual Machines
+* Networking
+* Activity Logs
+* Security Events
+* Performance Metrics
+
+## Screenshot
+
+```text
+screenshots/16-azure-monitor-dashboard.png
+```
+
+---
+
+# Step 16: Deploy Development VM
+
+Development workload deployed into the Development Landing Zone.
+
+## Virtual Machine
+
+```text
+vm-dev-web-01
+```
+
+## Screenshot
+
+```text
+screenshots/17-dev-vm.png
+```
+
+---
+
+# Step 17: Deploy Production VM
+
+Production workload deployed into the Production Landing Zone.
+
+## Virtual Machine
+
+```text
+vm-prod-web-01
+```
+
+## Screenshot
+
+```text
+screenshots/18-prod-vm.png
+```
+
+---
+
+# Step 18: Install IIS and Validate Workloads
+
+Installed IIS on both virtual machines.
+
+## Dev Page
+
+```html
+<h1>Hello from Dev Landing Zone</h1>
+```
+
+## Prod Page
+
+```html
+<h1>Hello from Prod Landing Zone</h1>
+```
+
+## Screenshot
+
+```text
+screenshots/19-workload-test-page.png
+```
+
+---
+
+# Step 19: Configure Cost Management Budget
+
+Created a monthly budget to monitor cloud spending.
+
+## Budget Configuration
+
+```text
+Budget Name: budget-landingzone-monthly
+Amount: 500 NOK
+Alert Threshold: 80%
+```
+
+## Screenshot
+
+```text
+screenshots/20-cost-budget.png
+```
+
+---
+
+# Project Validation Checklist
+
+| Task                          | Status |
+| ----------------------------- | ------ |
+| Management Groups Created     | ✅      |
+| Resource Groups Created       | ✅      |
+| Entra ID Configured           | ✅      |
+| RBAC Configured               | ✅      |
+| Hub-and-Spoke Network Created | ✅      |
+| VNet Peering Configured       | ✅      |
+| NSGs Configured               | ✅      |
+| Azure Bastion Deployed        | ✅      |
+| Azure Key Vault Configured    | ✅      |
+| Azure Policy Assigned         | ✅      |
+| Log Analytics Configured      | ✅      |
+| Azure Monitor Enabled         | ✅      |
+| Development VM Deployed       | ✅      |
+| Production VM Deployed        | ✅      |
+| Cost Budget Created           | ✅      |
+
+---
+
+# Skills Demonstrated
+
+* Azure Landing Zones
+* Azure Governance
+* Microsoft Entra ID
+* Azure RBAC
+* Azure Policy
+* Azure Networking
+* Hub-and-Spoke Architecture
+* Azure Bastion
+* Azure Key Vault
+* Azure Monitor
+* Log Analytics
+* Cost Management
+* Infrastructure as a Service (IaaS)
+* Cloud Security
+* Azure Administration
+
+---
+
+# Repository Structure
+
+```text
+azure-enterprise-landing-zone
+│
+├── README.md
+│
+├── architecture
+│   └── landing-zone-architecture.png
+│
+├── screenshots
+│   ├── 01-management-group-hierarchy.png
+│   ├── 02-resource-groups.png
+│   ├── 03-resource-tags.png
+│   ├── 04-entra-id-groups.png
+│   ├── 05-rbac-assignments.png
+│   ├── 06-hub-vnet.png
+│   ├── 07-dev-spoke-vnet.png
+│   ├── 08-prod-spoke-vnet.png
+│   ├── 09-vnet-peering.png
+│   ├── 10-nsg-rules.png
+│   ├── 11-azure-bastion.png
+│   ├── 12-key-vault-secrets.png
+│   ├── 13-policy-assignments.png
+│   ├── 14-policy-compliance.png
+│   ├── 15-log-analytics-workspace.png
+│   ├── 16-azure-monitor-dashboard.png
+│   ├── 17-dev-vm.png
+│   ├── 18-prod-vm.png
+│   ├── 19-workload-test-page.png
+│   └── 20-cost-budget.png
+│
+└── docs
+    ├── governance.md
+    ├── networking.md
+    ├── security.md
+    ├── monitoring.md
+    └── cost-management.md
+```
