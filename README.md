@@ -53,7 +53,7 @@ Tenant Root Group
 
 # Step 1: Create Management Group Hierarchy
 
-Management Groups provide governance and policy inheritance across subscriptions.
+Management groups help organize subscriptions and apply governance, Azure Policy, and RBAC across multiple environments. Microsoft notes that management groups are used to organize resources into a hierarchy for unified policy and access management.
 
 ## Management Groups Created
 
@@ -69,11 +69,27 @@ Management Groups provide governance and policy inheritance across subscriptions
 | mg-prod          | Production Workloads     |
 | mg-sandbox       | Testing Environment      |
 
+Tenant Root Group
+│
+└── mg-nordic-retail
+    │
+    ├── mg-platform
+    │   ├── mg-identity
+    │   ├── mg-management
+    │   └── mg-connectivity
+    │
+    ├── mg-landing-zones
+    │   ├── mg-dev
+    │   └── mg-prod
+    │
+    └── mg-sandbox
+
 ## Screenshot
 
-```text
-screenshots/01-management-group-hierarchy.png
-```
+
+![Management Group Hierarchy](screenshots/01-management-group-hierarchy.png)
+
+
 
 ---
 
