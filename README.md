@@ -95,6 +95,8 @@ Tenant Root Group
 
 # Step 2: Create Resource Groups
 
+Resource Groups provide logical separation of resources based on function and responsibility.
+
 Resource Groups were created to logically separate platform and workload resources.
 
 ## Resource Groups
@@ -110,9 +112,8 @@ Resource Groups were created to logically separate platform and workload resourc
 
 ## Screenshot
 
-```text
-screenshots/02-resource-groups.png
-```
+![Create Resource Groups](screenshots/02-resource-groups.png)
+
 
 ---
 
