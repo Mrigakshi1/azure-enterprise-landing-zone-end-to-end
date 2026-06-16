@@ -184,23 +184,30 @@ Created Microsoft Entra ID security groups to organize users based on job respon
 
 # Step 5: Configure Azure RBAC
 
-Role-Based Access Control (RBAC) ensures least-privilege access.
+RBAC means giving the right access to the right group at the right scope.
+
+Role-Based Access Control was configured to enforce least-privilege access across the Azure Landing Zone.
 
 ## Role Assignments
 
-| Group                | Role                |
-| -------------------- | ------------------- |
-| grp-cloud-admins     | Contributor         |
-| grp-network-admins   | Network Contributor |
-| grp-security-readers | Security Reader     |
-| grp-dev-team         | Contributor         |
-| grp-prod-team        | Reader              |
+| Group | Role | Scope |
+|---|---|---|
+| grp-cloud-admins | Contributor | Subscription |
+| grp-network-admins | Network Contributor | rg-platform-connectivity |
+| grp-security-readers | Security Reader | Subscription |
+| grp-dev-team | Contributor | rg-dev-workload |
+| grp-prod-team | Reader | rg-prod-workload |
 
 ## Screenshot
 
-```text
-screenshots/05-rbac-assignments.png
-```
+![RBAC Assignments](screenshots/05-rbac-assignments.png)
+
+## Key Learning
+
+- Azure RBAC
+- Least-privilege access
+- Access control at subscription and resource group scope
+- Microsoft Entra ID group-based access
 
 ---
 
