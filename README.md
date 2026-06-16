@@ -95,20 +95,18 @@ Tenant Root Group
 
 # Step 2: Create Resource Groups
 
-Resource Groups provide logical separation of resources based on function and responsibility.
-
-Resource Groups were created to logically separate platform and workload resources.
+Resource Groups were created to logically separate platform services, security resources, identity services, monitoring components, and workload environments.
 
 ## Resource Groups
 
-| Resource Group           | Purpose               |
-| ------------------------ | --------------------- |
-| rg-platform-connectivity | Networking Resources  |
-| rg-platform-management   | Monitoring Resources  |
-| rg-identity              | Identity Components   |
-| rg-security              | Security Components   |
-| rg-dev-workload          | Development Resources |
-| rg-prod-workload         | Production Resources  |
+| Resource Group | Purpose |
+|---|---|
+| rg-platform-connectivity | Hub network, Bastion, Firewall |
+| rg-platform-management | Log Analytics and monitoring |
+| rg-identity | Identity-related configuration |
+| rg-dev-workload | Development workload resources |
+| rg-prod-workload | Production workload resources |
+| rg-security | Key Vault and security resources |
 
 ## Screenshot
 
@@ -156,27 +154,33 @@ Naming standards and tags were implemented to improve governance, ownership trac
 - Cost allocation strategy
 - Enterprise Azure best practices
 
-# Step 4: Configure Microsoft Entra ID
+# Step 4: Configure Microsoft Entra ID Groups
 
-Created security groups for role-based administration.
+Created Microsoft Entra ID security groups to organize users based on job responsibilities and support role-based access control (RBAC).
 
 ## Groups Created
 
-| Group Name           |
-| -------------------- |
-| grp-cloud-admins     |
-| grp-network-admins   |
-| grp-security-readers |
-| grp-dev-team         |
-| grp-prod-team        |
+| Group | Purpose |
+|---------|---------|
+| grp-cloud-admins | Full cloud administration |
+| grp-network-admins | Network management |
+| grp-security-readers | Security monitoring |
+| grp-dev-team | Development environment access |
+| grp-prod-team | Production read-only access |
 
 ## Screenshot
 
-```text
-screenshots/04-entra-id-groups.png
-```
+![Microsoft Entra ID Groups](screenshots/04-entra-id-groups.png)
 
----
+## Key Learning
+
+- Identity and access management
+- Security group administration
+- Microsoft Entra ID
+- RBAC preparation
+- Enterprise governance
+
+----
 
 # Step 5: Configure Azure RBAC
 
