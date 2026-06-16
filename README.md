@@ -121,33 +121,40 @@ Resource Groups were created to logically separate platform and workload resourc
 
 Tags improve governance, ownership tracking, and cost management.
 
+Naming standards and tags were implemented to improve governance, ownership tracking, and cost management across Azure resources.
+
 ## Naming Convention
 
-```text
-rg-<environment>-<workload>
-vnet-<environment>-<purpose>
-vm-<environment>-<workload>-01
-nsg-<environment>-<purpose>
-kv-<company>-<environment>
-```
+| Resource Type | Convention |
+|---------------|------------|
+| Resource Group | rg-<environment>-<workload> |
+| Virtual Network | vnet-<environment>-<purpose> |
+| Subnet | snet-<purpose> |
+| Network Security Group | nsg-<environment>-<workload> |
+| Virtual Machine | vm-<environment>-<workload>-<number> |
+| Key Vault | kv-<company>-<environment> |
+| Log Analytics | log-<company>-<purpose> |
 
-## Tags
+## Tags Used
 
-| Tag         | Value       |
-| ----------- | ----------- |
-| Environment | Dev / Prod  |
-| Owner       | CloudTeam   |
-| CostCenter  | IT-001      |
-| Project     | LandingZone |
-| Criticality | High        |
+| Tag | Example |
+|------|---------|
+| Environment | Dev / Prod |
+| Owner | CloudTeam |
+| CostCenter | IT-001 |
+| Project | LandingZone |
+| Criticality | Medium / High |
 
 ## Screenshot
 
-```text
-screenshots/03-resource-tags.png
-```
+![Resource Tags](screenshots/03-resource-tags.png)
 
----
+## Key Learning
+
+- Governance and standardization
+- Resource ownership tracking
+- Cost allocation strategy
+- Enterprise Azure best practices
 
 # Step 4: Configure Microsoft Entra ID
 
