@@ -112,7 +112,7 @@ Resource Groups were created to logically separate platform and workload resourc
 
 ## Screenshot
 
-![Create Resource Groups](screenshots/02-resource-groups.png)
+![Create Resource Groups](screenshots/02-resource-groups-landing-zones.png)
 
 
 ---
