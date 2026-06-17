@@ -403,22 +403,34 @@ Configured Hub-and-Spoke connectivity by creating VNet peerings between the Hub 
 
 # Step 10: Configure Network Security Groups
 
-NSGs were created to control inbound and outbound traffic.
+Network Security Groups (NSGs) were configured to control inbound traffic and secure workload environments.
 
 ## Security Rules
 
-| Rule                 | Port | Action |
-| -------------------- | ---- | ------ |
-| Allow HTTP           | 80   | Allow  |
-| Allow HTTPS          | 443  | Allow  |
-| Deny Internet RDP    | 3389 | Deny   |
-| Allow Bastion Access | 3389 | Allow  |
+| Rule | Port | Action |
+|------|------|--------|
+| Allow-HTTP | 80 | Allow |
+| Allow-HTTPS | 443 | Allow |
+| Allow-Bastion-RDP | 3389 | Allow |
+| Deny-Internet-RDP | 3389 | Deny |
 
 ## Screenshot
 
-```text
-screenshots/10-nsg-rules.png
-```
+Network Security Groups
+
+![NSG Rules](screenshots/10-nsg-groups.png)
+
+Network Security Groups Rules
+
+![NSG Rules](screenshots/10-nsg-rules.png)
+
+## Key Learning
+
+- Azure Network Security Groups
+- Security Rule Priorities
+- Bastion-based Secure Access
+- Least Privilege Networking
+- Network Segmentation
 
 ---
 
