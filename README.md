@@ -377,23 +377,28 @@ The Production Spoke Network was created to host business-critical workloads wit
 
 # Step 9: Configure VNet Peering
 
-Configured Hub-and-Spoke connectivity.
+Configured Hub-and-Spoke connectivity by creating VNet peerings between the Hub Virtual Network and the Development and Production Spoke Networks.
 
 ## Peerings
 
-```text
-peer-hub-to-dev
-peer-dev-to-hub
-peer-hub-to-prod
-peer-prod-to-hub
-```
+| Peering | Purpose |
+|----------|----------|
+| peer-hub-to-dev | Hub to Development |
+| peer-dev-to-hub | Development to Hub |
+| peer-hub-to-prod | Hub to Production |
+| peer-prod-to-hub | Production to Hub |
 
 ## Screenshot
 
-```text
-screenshots/09-vnet-peering.png
-```
+![VNet Peering](screenshots/09-vnet-peering.png)
 
+## Key Learning
+
+- Azure VNet Peering
+- Hub-and-Spoke Architecture
+- Network Connectivity
+- Azure Networking
+- Enterprise Landing Zone Design
 ---
 
 # Step 10: Configure Network Security Groups
