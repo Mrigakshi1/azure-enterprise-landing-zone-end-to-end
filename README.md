@@ -513,28 +513,35 @@ Azure Bastion was deployed in the Hub Virtual Network to provide secure RDP and 
 
 # Step 12: Deploy Azure Key Vault
 
-Azure Key Vault securely stores secrets and credentials.
+Azure Key Vault was deployed to securely store application secrets, passwords, and connection strings.
 
 ## Key Vaults
 
-```text
-kv-nordicretail-dev
-kv-nordicretail-prod
-```
+| Key Vault | Purpose |
+|------------|------------|
+| kv-nordicretail-dev | Development secrets |
+| kv-nordicretail-prod | Production secrets |
 
 ## Secrets Stored
 
-```text
-vm-admin-password
-storage-access-key
-database-connection-string
-```
+| Secret |
+|------------|
+| vm-admin-password |
+| storage-access-key |
+| database-connection-string |
 
 ## Screenshot
 
-```text
-screenshots/12-key-vault-secrets.png
-```
+![Key Vault Secrets](screenshots/12-key-vault-secrets.png)
+
+## Key Learning
+
+- Azure Key Vault
+- Secret Management
+- Secure Credential Storage
+- Environment Separation
+- Azure Security Best Practices
+- Landing Zone Security Architecture
 
 ---
 
