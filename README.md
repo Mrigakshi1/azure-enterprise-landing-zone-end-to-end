@@ -311,21 +311,34 @@ The Hub Virtual Network was created to host shared networking and security servi
 
 # Step 7: Create Development Spoke Network
 
-The Development Landing Zone hosts non-production workloads.
+The Development Spoke Network was created to host non-production workloads within the Azure Landing Zone.
 
-## Dev Network
+## Development Network
 
-```text
-Name: vnet-spoke-dev
-Address Space: 10.1.0.0/16
-Subnet: 10.1.1.0/24
-```
+| Setting | Value |
+|----------|----------|
+| Name | vnet-spoke-dev |
+| Region | West Europe |
+| Address Space | 10.1.0.0/16 |
+| Resource Group | rg-dev-workload |
+
+## Subnet
+
+| Subnet | Address Range |
+|----------|----------|
+| snet-dev-workload | 10.1.1.0/24 |
 
 ## Screenshot
 
-```text
-screenshots/07-dev-spoke-vnet.png
-```
+![Development Spoke Network](screenshots/07-dev-spoke-vnet.png)
+
+## Key Learning
+
+- Azure Virtual Networks
+- Network Segmentation
+- Hub-and-Spoke Architecture
+- Development Environment Isolation
+- Azure Landing Zone Design
 
 ---
 
