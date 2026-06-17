@@ -23,7 +23,44 @@ The implementation includes:
 
 ---
 
-# Architecture
+
+## Architecture Overview
+
+The Azure Landing Zone follows a Hub-and-Spoke architecture aligned with Microsoft Cloud Adoption Framework principles.
+
+### Platform Layer
+
+- Connectivity
+  - Hub Virtual Network
+  - Azure Bastion
+  - Shared Network Services
+
+- Identity
+  - Microsoft Entra ID
+  - Security Groups
+  - RBAC
+
+- Management
+  - Log Analytics Workspace
+  - Monitoring and Governance
+
+### Landing Zones
+
+- Development Environment
+  - Resource Group: rg-dev-workload
+  - VNet: vnet-spoke-dev (10.1.0.0/16)
+
+- Production Environment
+  - Resource Group: rg-prod-workload
+  - VNet: vnet-spoke-prod (10.2.0.0/16)
+
+### Networking
+
+- Hub VNet: 10.0.0.0/16
+- Dev Spoke: 10.1.0.0/16
+- Prod Spoke: 10.2.0.0/16
+- Hub-to-Spoke VNet Peering
+- Azure Bastion for secure administration
 
 ```text
 Tenant Root
