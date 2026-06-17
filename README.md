@@ -567,6 +567,18 @@ Azure Policy was implemented to enforce governance, security, and compliance sta
 
 ![Policy Compliance](screenshots/14-policy-compliance.png)
 
+## Policy Enforcement Validation
+
+Azure Policy successfully prevented deployment of a resource that did not comply with the organization's tagging standards.
+
+### Screenshot
+
+![Policy Enforcement](screenshots/14-policy-enforcement.png)
+
+### Result
+
+The Log Analytics Workspace deployment was blocked because the required resource tags were not specified, demonstrating Azure Policy governance enforcement.
+
 ## Key Learning
 
 - Azure Policy
