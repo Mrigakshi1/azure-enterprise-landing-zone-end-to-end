@@ -344,21 +344,34 @@ The Development Spoke Network was created to host non-production workloads withi
 
 # Step 8: Create Production Spoke Network
 
-The Production Landing Zone hosts business-critical workloads.
+The Production Spoke Network was created to host business-critical workloads within the Azure Landing Zone.
 
-## Prod Network
+## Production Network
 
-```text
-Name: vnet-spoke-prod
-Address Space: 10.2.0.0/16
-Subnet: 10.2.1.0/24
-```
+| Setting | Value |
+|----------|----------|
+| Name | vnet-spoke-prod |
+| Region | West Europe |
+| Address Space | 10.2.0.0/16 |
+| Resource Group | rg-prod-workload |
+
+## Subnet
+
+| Subnet | Address Range |
+|----------|----------|
+| snet-prod-workload | 10.2.1.0/24 |
 
 ## Screenshot
 
-```text
-screenshots/08-prod-spoke-vnet.png
-```
+![Production Spoke Network](screenshots/08-prod-spoke-vnet.png)
+
+## Key Learning
+
+- Azure Virtual Networks
+- Production Environment Isolation
+- Hub-and-Spoke Architecture
+- Network Segmentation
+- Azure Landing Zone Design
 
 ---
 
