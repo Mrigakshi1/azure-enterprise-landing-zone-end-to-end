@@ -26,20 +26,30 @@ The implementation includes:
 # Architecture
 
 ```text
-Tenant Root Group
+Tenant Root
 │
 └── mg-nordic-retail
     │
-    ├── mg-platform
-    │   ├── mg-identity
-    │   ├── mg-management
-    │   └── mg-connectivity
+    ├── Platform
+    │   ├── Connectivity
+    │   │    └── rg-platform-connectivity
+    │   │         └── Hub VNet
+    │   │
+    │   ├── Identity
+    │   │    └── Entra ID Groups
+    │   │
+    │   └── Management
+    │        └── rg-platform-management
+    │             └── Log Analytics
     │
-    ├── mg-landing-zones
-    │   ├── mg-dev
-    │   └── mg-prod
-    │
-    └── mg-sandbox
+    └── Landing Zones
+        ├── Development
+        │     └── rg-dev-workload
+        │          └── Dev Spoke VNet
+        │
+        └── Production
+              └── rg-prod-workload
+                   └── Prod Spoke VNet
 ```
 
 ## Architecture Diagram
