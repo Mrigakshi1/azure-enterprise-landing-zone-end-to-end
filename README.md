@@ -277,29 +277,36 @@ Subscription
 
 # Step 6: Create Hub Virtual Network
 
-The Hub VNet hosts shared services and secure connectivity resources.
+The Hub Virtual Network was created to host shared networking and security services for the Azure Landing Zone.
 
 ## Hub Network
 
-```text
-Name: vnet-hub
-Address Space: 10.0.0.0/16
-```
+| Setting | Value |
+|----------|----------|
+| Name | vnet-hub |
+| Address Space | 10.0.0.0/16 |
+| Resource Group | rg-platform-connectivity |
 
 ## Subnets
 
-```text
-AzureBastionSubnet
-AzureFirewallSubnet
-snet-shared-services
-```
+| Subnet | Address Range |
+|----------|----------|
+| AzureBastionSubnet | 10.0.1.0/26 |
+| AzureFirewallSubnet | 10.0.2.0/26 |
+| snet-shared-services | 10.0.3.0/24 |
 
 ## Screenshot
 
-```text
-screenshots/06-hub-vnet.png
-```
+![Hub Virtual Network](screenshots/06-hub-vnet.png)
 
+## Key Learning
+
+- Azure Virtual Networks
+- Hub-and-Spoke Architecture
+- Network Segmentation
+- Azure Bastion Requirements
+- Azure Firewall Requirements
+- Enterprise Landing Zone Networking
 ---
 
 # Step 7: Create Development Spoke Network
