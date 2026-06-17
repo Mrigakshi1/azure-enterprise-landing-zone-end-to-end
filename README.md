@@ -483,13 +483,31 @@ Network Security Groups Rules
 
 # Step 11: Deploy Azure Bastion
 
-Azure Bastion enables secure RDP and SSH connectivity without exposing public IP addresses.
+Azure Bastion was deployed in the Hub Virtual Network to provide secure RDP and SSH access to virtual machines without exposing public IP addresses.
+
+## Bastion Configuration
+
+| Setting | Value |
+|----------|----------|
+| Name | bastion-hub |
+| Resource Group | rg-platform-connectivity |
+| Region | West Europe |
+| Virtual Network | vnet-hub |
+| Subnet | AzureBastionSubnet |
+| Public IP | pip-bastion-hub |
 
 ## Screenshot
 
-```text
-screenshots/11-azure-bastion.png
-```
+![Azure Bastion](screenshots/11-azure-bastion.png)
+
+## Key Learning
+
+- Azure Bastion
+- Secure Remote Administration
+- RDP without Public IP
+- SSH without Public IP
+- Hub-and-Spoke Architecture
+- Azure Landing Zone Security
 
 ---
 
