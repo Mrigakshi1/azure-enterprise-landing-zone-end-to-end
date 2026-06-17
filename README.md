@@ -627,20 +627,30 @@ A centralized Log Analytics Workspace was deployed to provide monitoring, diagno
 
 # Step 15: Enable Azure Monitor
 
-Monitoring was enabled for:
+Azure Monitor was enabled to provide centralized monitoring and operational visibility across the Azure Landing Zone.
 
-* Virtual Machines
-* Networking
-* Activity Logs
-* Security Events
-* Performance Metrics
+## Monitoring Capabilities
+
+- Activity Logs
+- Alerts
+- Metrics
+- Log Analytics Integration
+- Service Health Monitoring
+- Resource Diagnostics
 
 ## Screenshot
 
-```text
-screenshots/16-azure-monitor-dashboard.png
-```
+![Azure Monitor Dashboard](screenshots/16-azure-monitor-dashboard.png)
+![Azure Monitor Dashboard](screenshots/16-azure-monitor-dashboard-activitylogs.png)
 
+## Key Learning
+
+- Azure Monitor
+- Centralized Monitoring
+- Activity Log Analysis
+- Metrics Collection
+- Service Health Monitoring
+- Landing Zone Observability
 ---
 
 # Step 16: Deploy Development VM
