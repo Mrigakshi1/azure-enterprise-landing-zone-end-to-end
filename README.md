@@ -184,30 +184,94 @@ Created Microsoft Entra ID security groups to organize users based on job respon
 
 # Step 5: Configure Azure RBAC
 
-RBAC means giving the right access to the right group at the right scope.
+Role-Based Access Control (RBAC) was implemented to enforce least-privilege access across the Azure Landing Zone.
 
-Role-Based Access Control was configured to enforce least-privilege access across the Azure Landing Zone.
+RBAC assignments were configured using Microsoft Entra ID groups to ensure users receive only the permissions required to perform their job responsibilities.
 
 ## Role Assignments
 
-| Group | Role | Scope |
-|---|---|---|
-| grp-cloud-admins | Contributor | Subscription |
+| Group                | Role                | Scope                    |
+| -------------------- | ------------------- | ------------------------ |
+| grp-cloud-admins     | Contributor         | Subscription             |
+| grp-security-readers | Security Reader     | Subscription             |
+| grp-network-admins   | Network Contributor | rg-platform-connectivity |
+| grp-dev-team         | Contributor         | rg-dev-workload          |
+| grp-prod-team        | Reader              | rg-prod-workload         |
+
+## Subscription-Level Assignments
+
+Subscription-level permissions were assigned to administrative and security groups that require visibility and management access across the entire Azure environment.
+
+### Assigned Roles
+
+| Group                | Role            |
+| -------------------- | --------------- |
+| grp-cloud-admins     | Contributor     |
+| grp-security-readers | Security Reader |
+
+### Screenshot
+
+![Subscription RBAC Assignments](screenshots/05-rbac-subscription-assignments.png)
+
+---
+
+## Resource Group-Level Assignments
+
+Resource group-level permissions were assigned to workload-specific teams to ensure access is restricted according to the principle of least privilege.
+
+### Assigned Roles
+
+| Group              | Role                | Scope                    |
+| ------------------ | ------------------- | ------------------------ |
 | grp-network-admins | Network Contributor | rg-platform-connectivity |
-| grp-security-readers | Security Reader | Subscription |
-| grp-dev-team | Contributor | rg-dev-workload |
-| grp-prod-team | Reader | rg-prod-workload |
+| grp-dev-team       | Contributor         | rg-dev-workload          |
+| grp-prod-team      | Reader              | rg-prod-workload         |
 
-## Screenshot
+### Screenshot
 
-![RBAC Assignments](screenshots/05-rbac-assignments.png)
+rg-prod-workload
+
+![Resource Group RBAC Assignments](screenshots/06-rbac-resource-group-assignments.png)
+
+rg-dev-workload
+
+![Resource Group RBAC Assignments](screenshots/06-rbac-resource-group-assignments-rgdev.png)
+
+---
 
 ## Key Learning
 
-- Azure RBAC
-- Least-privilege access
-- Access control at subscription and resource group scope
-- Microsoft Entra ID group-based access
+* Azure RBAC
+* Microsoft Entra ID integration
+* Subscription-level access control
+* Resource Group-level access control
+* Principle of Least Privilege
+* Enterprise governance and security
+* Access management using security groups
+
+## RBAC Design
+
+```text
+Subscription
+│
+├── grp-cloud-admins
+│   └── Contributor
+│
+├── grp-security-readers
+│   └── Security Reader
+│
+├── rg-platform-connectivity
+│   └── grp-network-admins
+│       └── Network Contributor
+│
+├── rg-dev-workload
+│   └── grp-dev-team
+│       └── Contributor
+│
+└── rg-prod-workload
+    └── grp-prod-team
+        └── Reader
+```
 
 ---
 
