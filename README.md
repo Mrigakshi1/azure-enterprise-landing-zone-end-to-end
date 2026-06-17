@@ -593,20 +593,36 @@ The Log Analytics Workspace deployment was blocked because the required resource
 
 # Step 14: Configure Log Analytics Workspace
 
-Centralized logging and monitoring were enabled.
+A centralized Log Analytics Workspace was deployed to provide monitoring, diagnostics, and operational insights across the Azure Landing Zone.
 
 ## Workspace
 
-```text
-log-nordicretail-landingzone
-```
+| Setting | Value |
+|----------|----------|
+| Name | log-nordicretail-landingzone |
+| Resource Group | rg-platform-management |
+| Region | West Europe |
+
+## Monitoring Sources
+
+- Azure Activity Logs
+- Azure Bastion Diagnostics
+- Azure Policy Compliance
+- NSG Diagnostics
+- Virtual Machine Monitoring
 
 ## Screenshot
 
-```text
-screenshots/15-log-analytics-workspace.png
-```
+![Log Analytics Workspace](screenshots/15-log-analytics-workspace.png)
 
+## Key Learning
+
+- Azure Monitor
+- Log Analytics
+- Centralized Monitoring
+- Operational Insights
+- Azure Diagnostics
+- Landing Zone Observability
 ---
 
 # Step 15: Enable Azure Monitor
