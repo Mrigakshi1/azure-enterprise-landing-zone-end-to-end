@@ -711,25 +711,34 @@ Installed IIS on both virtual machines.
 screenshots/19-workload-test-page.png
 ```
 
----
-
 # Step 19: Configure Cost Management Budget
 
-Created a monthly budget to monitor cloud spending.
+A monthly Azure budget was created to monitor cloud spending and provide proactive cost control.
 
 ## Budget Configuration
 
-```text
-Budget Name: budget-landingzone-monthly
-Amount: 500 NOK
-Alert Threshold: 80%
-```
+| Setting | Value |
+|----------|----------|
+| Budget Name | budget-landingzone-monthly |
+| Amount | 50 USD |
+| Period | Monthly |
+| Alert Threshold | 80% |
+| Scope | Azure Subscription |
 
 ## Screenshot
 
-```text
-screenshots/20-cost-budget.png
-```
+![Cost Management Budget](screenshots/20-cost-management.png)
+
+![Cost Management Budget](screenshots/20-cost-budget.png)
+
+## Key Learning
+
+- Azure Cost Management
+- Budget Planning
+- Cost Governance
+- Spending Alerts
+- Financial Operations (FinOps)
+- Landing Zone Cost Control
 
 ---
 
