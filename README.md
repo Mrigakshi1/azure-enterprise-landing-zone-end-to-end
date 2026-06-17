@@ -547,22 +547,35 @@ Azure Key Vault was deployed to securely store application secrets, passwords, a
 
 # Step 13: Configure Azure Policy
 
-Azure Policy was implemented to enforce governance standards.
+Azure Policy was implemented to enforce governance, security, and compliance standards across the Azure Landing Zone.
 
 ## Policies Assigned
 
-* Require Resource Tags
-* Restrict Allowed Regions
-* Deny Public IP Addresses
-* Require Secure Storage Transfer
-* Audit Missing Backups
+| Policy | Purpose |
+|----------|----------|
+| Require Resource Tags | Enforce resource tagging standards |
+| Allowed Locations | Restrict deployments to approved regions |
+| Not Allowed Resource Types | Prevent creation of Public IP Addresses |
+| Secure Transfer Required | Enforce HTTPS for Storage Accounts |
+| Audit Missing Backups | Identify workloads without backup protection |
 
-## Screenshots
+## Policy Assignments
 
-```text
-screenshots/13-policy-assignments.png
-screenshots/14-policy-compliance.png
-```
+![Policy Assignments](screenshots/13-policy-assignments.png)
+
+## Compliance Overview
+
+![Policy Compliance](screenshots/14-policy-compliance.png)
+
+## Key Learning
+
+- Azure Policy
+- Governance
+- Compliance Management
+- Resource Standardization
+- Cost Control
+- Security Best Practices
+- Landing Zone Governance
 
 ---
 
