@@ -798,21 +798,21 @@ Email notification: Your Azure budget, budget-landingzone-monthly, has exceeded 
 
 | Task                          | Status |
 | ----------------------------- | ------ |
-| Management Groups Created     | ✅      |
-| Resource Groups Created       | ✅      |
-| Entra ID Configured           | ✅      |
-| RBAC Configured               | ✅      |
-| Hub-and-Spoke Network Created | ✅      |
-| VNet Peering Configured       | ✅      |
-| NSGs Configured               | ✅      |
-| Azure Bastion Deployed        | ✅      |
-| Azure Key Vault Configured    | ✅      |
-| Azure Policy Assigned         | ✅      |
-| Log Analytics Configured      | ✅      |
-| Azure Monitor Enabled         | ✅      |
-| Development VM Deployed       | ✅      |
-| Production VM Deployed        | ✅      |
-| Cost Budget Created           | ✅      |
+| Management Groups Created     | OK     |
+| Resource Groups Created       | OK     |
+| Entra ID Configured           | OK     |
+| RBAC Configured               | OK     |
+| Hub-and-Spoke Network Created | OK     |
+| VNet Peering Configured       | OK     |
+| NSGs Configured               | OK     |
+| Azure Bastion Deployed        | OK     |
+| Azure Key Vault Configured    | OK     |
+| Azure Policy Assigned         | OK     |
+| Log Analytics Configured      | OK     |
+| Azure Monitor Enabled         | OK     |
+| Development VM Deployed       | OK     |
+| Production VM Deployed        | OK     |
+| Cost Budget Created           | OK     |
 
 ---
 
