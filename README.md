@@ -655,20 +655,32 @@ Azure Monitor was enabled to provide centralized monitoring and operational visi
 
 # Step 16: Deploy Development VM
 
-Development workload deployed into the Development Landing Zone.
+A development workload virtual machine was deployed into the Development Landing Zone.
 
 ## Virtual Machine
 
-```text
-vm-dev-web-01
-```
+| Setting | Value |
+|----------|----------|
+| Name | vm-dev-web-01 |
+| Resource Group | rg-dev-workload |
+| Region | West Europe |
+| Virtual Network | vnet-spoke-dev |
+| Network Security Group | nsg-dev-workload |
+| Public IP | None |
+| Access Method | Azure Bastion |
 
 ## Screenshot
 
-```text
-screenshots/17-dev-vm.png
-```
+![Development VM](screenshots/17-dev-vm.png)
 
+## Key Learning
+
+- Azure Virtual Machines
+- Landing Zone Workloads
+- Private Networking
+- Azure Bastion Access
+- Network Security Groups
+- Hub-and-Spoke Architecture
 ---
 
 # Step 17: Deploy Production VM
