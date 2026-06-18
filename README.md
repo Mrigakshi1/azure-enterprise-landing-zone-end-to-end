@@ -673,6 +673,9 @@ A development workload virtual machine was deployed into the Development Landing
 
 ![Development VM](screenshots/17-dev-vm.png)
 
+Azure Bastion connection
+![Development VM](screenshots/17-dev-vm-bastion.png)
+
 ## Key Learning
 
 - Azure Virtual Machines
@@ -685,19 +688,36 @@ A development workload virtual machine was deployed into the Development Landing
 
 # Step 17: Deploy Production VM
 
-Production workload deployed into the Production Landing Zone.
+A production workload virtual machine was deployed into the Production Landing Zone.
 
 ## Virtual Machine
 
-```text
-vm-prod-web-01
-```
+| Setting | Value |
+|----------|----------|
+| Name | vm-prod-web-01 |
+| Resource Group | rg-prod-workload |
+| Region | West Europe |
+| Virtual Network | vnet-spoke-prod |
+| Network Security Group | nsg-prod-workload |
+| Public IP | None |
+| Access Method | Azure Bastion |
 
 ## Screenshot
 
-```text
-screenshots/18-prod-vm.png
-```
+![Production VM](screenshots/18-prod-vm.png)
+
+Azure Bastion connection
+
+![Production VM](screenshots/18-prod-vm-bastion.png)
+
+## Key Learning
+
+- Azure Virtual Machines
+- Production Landing Zones
+- Workload Isolation
+- Network Segmentation
+- Hub-and-Spoke Architecture
+- Infrastructure Deployment
 
 ---
 
