@@ -722,7 +722,7 @@ Azure Bastion connection
 ---
 
 
-# Step 18: Install IIS and Validate Development Workload
+# Step 18: Install IIS and Validate Development and Production Workload
 
 IIS was installed on the Development VM to validate workload deployment within the Development Landing Zone.
 
@@ -741,6 +741,14 @@ IIS was installed on the Development VM to validate workload deployment within t
 ## Validation
 
 The web page was successfully served through IIS on the Development VM.
+
+## Production Workload
+
+```html
+<h1>Hello from Prod Landing Zone</h1>
+```
+
+![Production Workload](screenshots/21-prod-workload-page.png)
 
 ## Key Learning
 
