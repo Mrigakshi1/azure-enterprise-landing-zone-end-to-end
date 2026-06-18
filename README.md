@@ -721,27 +721,36 @@ Azure Bastion connection
 
 ---
 
-# Step 18: Install IIS and Validate Workloads
 
-Installed IIS on both virtual machines.
+# Step 18: Install IIS and Validate Development Workload
 
-## Dev Page
+IIS was installed on the Development VM to validate workload deployment within the Development Landing Zone.
+
+## IIS Installation
+
+![IIS Installation](screenshots/19-iis-installation-success.png)
+
+## Development Landing Zone Test Page
 
 ```html
 <h1>Hello from Dev Landing Zone</h1>
 ```
 
-## Prod Page
+![Development Workload](screenshots/20-dev-workload-page.png)
 
-```html
-<h1>Hello from Prod Landing Zone</h1>
-```
+## Validation
 
-## Screenshot
+The web page was successfully served through IIS on the Development VM.
 
-```text
-screenshots/19-workload-test-page.png
-```
+## Key Learning
+
+- Windows Server Administration
+- IIS Installation
+- Azure Virtual Machines
+- Workload Validation
+- Development Landing Zone
+- Azure Bastion Connectivity
+
 
 # Step 19: Configure Cost Management Budget
 
