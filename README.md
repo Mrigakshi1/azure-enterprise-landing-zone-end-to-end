@@ -780,6 +780,9 @@ A monthly Azure budget was created to monitor cloud spending and provide proacti
 
 ![Cost Management Budget](screenshots/20-cost-budget.png)
 
+Email notification: Your Azure budget, budget-landingzone-monthly, has exceeded its threshold value
+![Cost Management Budget](screenshots/20-cost-budget-email.png)
+
 ## Key Learning
 
 - Azure Cost Management
